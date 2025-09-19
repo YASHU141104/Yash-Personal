@@ -6,127 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700" rel="stylesheet">
   <style>
-    body {
-      background: linear-gradient(115deg, #c4e0e5, #4ca1af 60%);
-      font-family: 'Inter', Arial, sans-serif;
-      margin: 0; min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .resume-card {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(44, 62, 80, .22);
-      width: 95vw; max-width: 540px;
-      padding: 36px 28px 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-    }
-    .profile-photo {
-      width: 120px; height: 120px;
-      object-fit: cover;
-      border-radius: 56px;
-      border: 4px solid #007bff;
-      box-shadow: 0 6px 20px rgba(0, 123, 255, .27);
-      margin-bottom: 18px;
-      background: #e7eaf6;
-      transition: box-shadow .22s;
-    }
-    .profile-photo:hover {
-      box-shadow: 0 12px 36px rgba(0,123,255,.35);
-      cursor: pointer;
-    }
-    h1 {
-      font-size: 2.3em;
-      font-weight: 700;
-      color: #173b6c;
-      margin: 8px 0 2px 0;
-      text-align: center;
-      letter-spacing: 0.01em;
-    }
-    .main-meta {
-      text-align: center;
-      color: #4ca1af;
-      font-size: 1.04em;
-      margin: 0 0 14px;
-      font-weight: 500;
-      word-break: break-all;
-    }
-    .section-heading {
-      width: 100%;
-      font-size: 1.13em;
-      font-weight: 600;
-      color: #007bff;
-      letter-spacing: 0.02em;
-      background: rgba(76,161,175, .10);
-      border-radius: 6px;
-      margin-top: 24px; margin-bottom: 2px;
-      padding: 8px 16px;
-      cursor: pointer;
-      transition: background .18s, color .08s;
-      box-shadow: 0 2px 8px rgba(0,123,255,.03);
-      border: none;
-    }
-    .section-heading:hover {
-      background: rgba(0,123,255, .12);
-      color: #173b6c;
-    }
-    .summary-view {
-      color: #19202c;
-      background: #f3f7f9;
-      border-radius: 6px;
-      width: 100%;
-      min-height: 20px;
-      margin-bottom: 2px;
-      padding: 11px 15px;
-      font-size: 1em;
-    }
+    body { background: linear-gradient(115deg, #c4e0e5, #4ca1af 60%);
+      font-family: 'Inter', Arial, sans-serif; margin: 0; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center; }
+    .resume-card { background: #fff; border-radius: 16px; box-shadow: 0 8px 32px rgba(44,62,80,.22);
+      width: 95vw; max-width: 540px; padding: 36px 28px 30px; display: flex; flex-direction: column; align-items: center; position: relative; }
+    .profile-photo { width: 120px; height: 120px; object-fit: cover; border-radius: 56px; border: 4px solid #007bff;
+      box-shadow: 0 6px 20px rgba(0,123,255,.27); margin-bottom: 18px; background: #e7eaf6; transition: box-shadow .22s; }
+    .profile-photo:hover { box-shadow: 0 12px 36px rgba(0,123,255,.35); cursor: pointer; }
+    h1 { font-size: 2.3em; font-weight: 700; color: #173b6c; margin: 8px 0 2px 0; text-align: center; letter-spacing: 0.01em; }
+    .main-meta { text-align: center; color: #4ca1af; font-size: 1.04em; margin: 0 0 14px; font-weight: 500; word-break: break-all; }
+    .section-heading { width: 100%; font-size: 1.13em; font-weight: 600; color: #007bff;
+      letter-spacing: 0.02em; background: rgba(76,161,175, .10); border-radius: 6px;
+      margin-top: 24px; margin-bottom: 2px; padding: 8px 16px; cursor: pointer;
+      transition: background .18s, color .08s; box-shadow: 0 2px 8px rgba(0,123,255,.03); border: none;}
+    .section-heading:hover { background: rgba(0,123,255, .12); color: #173b6c;}
+    .summary-view {color: #19202c; background: #f3f7f9; border-radius: 6px; width: 100%; min-height: 20px;
+      margin-bottom: 2px; padding: 11px 15px; font-size: 1em;}
+    .skills-list { margin: 0 0 8px 14px; padding: 0;}
+    .skills-list li { margin-bottom: 3px;}
     /* Modal Styles */
-    .modal {
-      display: none; position: fixed; z-index: 1001;
-      left: 0; top: 0; right: 0; bottom: 0;
-      background: rgba(30,35,67,0.26);
-      justify-content: center; align-items: center;
-    }
-    .modal-content {
-      background: #fff;
-      border-radius: 14px;
-      padding: 28px 18px 18px;
-      min-width: 340px; max-width: 95vw;
-      box-shadow: 0 6px 40px rgba(14,40,70,.18);
-      position: relative;
-    }
-    .close-btn {
-      position: absolute; top: 12px; right: 18px;
-      background: none; border: none;
-      font-size: 1.7em; cursor: pointer;
-      color: #b5b8bb;
-    }
-    .modal label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-    .modal textarea, .modal input[type='text'] {
-      width: 98%; padding: 8px;
-      border-radius: 6px; border: 1px solid #bedcec;
-      font-size: 1em;
-      margin-bottom: 17px;
-      background: #f8fafc;
-    }
-    .save-btn {
-      background: #007bff; color: #fff;
-      font-weight: 600; border: none;
-      border-radius: 5px; padding: 7px 22px;
-      cursor: pointer; font-size: 1em;
-      float: right;
-      box-shadow: 0 1px 6px rgba(0,123,255,.06);
-    }
-    @media (max-width: 700px) {
-      .resume-card { padding: 20px 2vw; }
-      .modal-content { min-width: 85vw;}
-    }
+    .modal { display: none; position: fixed; z-index: 1001; left: 0; top: 0; right: 0; bottom: 0;
+      background: rgba(30,35,67,0.26); justify-content: center; align-items: center;}
+    .modal-content {background: #fff; border-radius: 14px; padding: 28px 18px 18px;
+      min-width: 340px; max-width: 95vw; box-shadow: 0 6px 40px rgba(14,40,70,.18); position: relative;}
+    .close-btn { position: absolute; top: 12px; right: 18px; background: none; border: none; font-size: 1.7em; cursor: pointer; color: #b5b8bb;}
+    .modal label {display: block; font-weight: 600; margin-bottom: 6px;}
+    .modal textarea, .modal input[type='text'] { width: 98%; padding: 8px; border-radius: 6px; border: 1px solid #bedcec; font-size: 1em; margin-bottom: 17px; background: #f8fafc;}
+    .save-btn { background: #007bff; color: #fff; font-weight: 600; border: none; border-radius: 5px; padding: 7px 22px; cursor: pointer; font-size: 1em; float: right; box-shadow: 0 1px 6px rgba(0,123,255,.06);}
+    @media (max-width: 700px) {.resume-card { padding: 20px 2vw; } .modal-content { min-width: 85vw;} }
   </style>
 </head>
 <body>
@@ -139,7 +47,6 @@
       <button class="save-btn" onclick="saveModalContent()">Save</button>
     </div>
   </div>
-  
   <div class="resume-card">
     <input type="file" id="photo-upload" style="display:none;" accept="image/*">
     <!-- Photo appears here -->
@@ -147,38 +54,94 @@
          onclick="document.getElementById('photo-upload').click();">
     <h1>Yashwant S C</h1>
     <div class="main-meta">
-      Phone: +91 9976460475 <br>
+      +91 9976460475<br>
       yashwantshrini2004@gmail.com<br>
-      Salem, Tamil Nadu
+      93G/182, Pudhu Road, Old Suramangalam, Salem 636 005
     </div>
     
-    <!-- Section Headings (Clickable) -->
+    <!-- Skills -->
+    <button class="section-heading" onclick="openModal('Skills')">Skills</button>
+    <div id="Skills-summary" class="summary-view">
+      <ul class="skills-list">
+        <li>Legal Compliance</li>
+        <li>Oral communication</li>
+        <li>Document Review</li>
+        <li>Legal writing and Legal Research</li>
+        <li>Relationship building and rapport</li>
+        <li>Data Entry and Database Maintenance</li>
+        <li>Research</li>
+      </ul>
+    </div>
+    <!-- Languages -->
+    <button class="section-heading" onclick="openModal('Languages')">Languages</button>
+    <div id="Languages-summary" class="summary-view">
+      English (Fluent), Tamil (Fluent)
+    </div>
+    <!-- Profile -->
     <button class="section-heading" onclick="openModal('Profile')">Profile</button>
-    <div id="Profile-summary" class="summary-view">Resourceful Law Intern skilled in research, drafting, and support for legal teams.</div>
-    
+    <div id="Profile-summary" class="summary-view">
+      Resourceful and motivated Law Intern with a strong foundation in legal research, drafting, and case preparation, gained through hands-on experience in corporate law, criminal defense, and family law. Known for completing tasks efficiently with accuracy and attention to detail, while supporting senior attorneys and maintaining strict confidentiality. Skilled in client interviews, legal documentation, and problem-solving, with excellent communication and time management abilities. Currently pursuing a law degree and eager to contribute to legal teams by providing high-quality support and gaining valuable, practical experience in a fast-paced legal environment.
+    </div>
+    <!-- Education -->
     <button class="section-heading" onclick="openModal('Education')">Education</button>
-    <div id="Education-summary" class="summary-view">B.Com., LL.B. (Hons) at SASTRA Deemed University | HSC at Sri Vidya Bharati</div>
-    
+    <div id="Education-summary" class="summary-view">
+      <ul class="skills-list">
+        <li><b>SASTRA DEEMED TO BE UNIVERSITY:</b> Law-B.Com.LL.B.(Hons.), CGPA 8.6336 (2022–2027)</li>
+        <li><b>SRI VIDYA BHARATI MAT. HR. SEC. SCHOOL:</b> Higher Secondary Education, 585/600 (2021–2022)</li>
+      </ul>
+    </div>
+    <!-- Internship Experience -->
     <button class="section-heading" onclick="openModal('Internship')">Internship Experience</button>
-    <div id="Internship-summary" class="summary-view">Shivakumar & Suresh Advocates, KM Murugappan Advocate, and others</div>
-    
+    <div id="Internship-summary" class="summary-view">
+      <ul class="skills-list">
+        <li><b>Shivakumar & Suresh Advocates</b>, under Adv. K. Balamurali, Madras High Court and City Civil Court, Chennai (Dec 23, 2024 – Jan 18, 2025)<br>• Assisted in legal research and case preparation for civil and criminal matters.<br>• Observed court proceedings.<br>• Drafted legal documents and client consultation summaries.<br>• Maintained confidentiality supporting senior advocate.</li>
+        <li><b>KM. Murugappan, Advocate</b>, Pudukkottai District Court (June 25, 2024 – July 25, 2024)<br>• Legal research, case summarization, drafting petitions.<br>• Observed courtroom procedure, supported trial prep.<br>• Organized case files and legal documents.</li>
+        <li><b>K. Arumugam, Advocate</b>, Salem District Court (Jan 18, 2024 – Feb 5, 2024)</li>
+        <li><b>E. Kannan, Advocate</b>, Salem District Court (Aug 2023 – Sep 2023)<br>• Client interaction, documentation, legal drafting.</li>
+      </ul>
+    </div>
+    <!-- Accomplishments -->
     <button class="section-heading" onclick="openModal('Accomplishments')">Accomplishments</button>
-    <div id="Accomplishments-summary" class="summary-view">Moots, essay competitions, and research publication</div>
-    
+    <div id="Accomplishments-summary" class="summary-view">
+      <ul class="skills-list">
+        <li>Quarter-Finalist, 1st SGTU International Moot Court Competition (2024–25)</li>
+        <li>Participant, KLA Moot Court Competition</li>
+        <li>Participant, Intra-Moot Court Competition conducted by SASTRA University School of Law</li>
+        <li>
+          <b>Essay Competitions:</b>
+          <ul>
+            <li>State Level Essay Competition on “Constitutional Fundamental Duties: Balancing Rights and Responsibilities” (Constitution Day)</li>
+            <li>Essay Competition by Thanjavur District Court</li>
+            <li>Independence Day Essay Competition on the Constitution of India (Governor of Tamil Nadu)</li>
+          </ul>
+        </li>
+        <li>
+          <b>Research and Publication:</b>
+          Published article "Love Unchained: India’s Quest for Same-Sex Marriage Equality" (IJLMH, 2023).<br>
+          Preparing an article on Media Influence on the Indian Judicial System.
+        </li>
+      </ul>
+    </div>
+    <!-- Professional Qualifications -->
     <button class="section-heading" onclick="openModal('Professional Qualifications')">Professional Qualifications</button>
-    <div id="Professional Qualifications-summary" class="summary-view">ICSI CSEET, pursuing ICSI Executive Program</div>
+    <div id="Professional Qualifications-summary" class="summary-view">
+      <ul class="skills-list">
+        <li>Completed ICSI CSEET (Foundation Level)</li>
+        <li>Currently pursuing ICSI Executive Program</li>
+      </ul>
+    </div>
   </div>
-
   <script>
-    // Modal data storage
+    // Modal data storage (update below if you edit summary)
     const modalData = {
-      "Profile": "Resourceful Law Intern skilled in research, drafting, and support for legal teams.",
-      "Education": "B.Com., LL.B. (Hons) at SASTRA Deemed University | HSC at Sri Vidya Bharati",
-      "Internship": "Shivakumar & Suresh Advocates, KM Murugappan Advocate, and others",
-      "Accomplishments": "Moots, essay competitions, and research publication",
-      "Professional Qualifications": "ICSI CSEET, pursuing ICSI Executive Program"
+      "Skills": "Legal Compliance\nOral communication\nDocument Review\nLegal writing and Legal Research\nRelationship building and rapport\nData Entry and Database Maintenance\nResearch",
+      "Languages": "English (Fluent), Tamil (Fluent)",
+      "Profile": "Resourceful and motivated Law Intern with a strong foundation in legal research, drafting, and case preparation, gained through hands-on experience in corporate law, criminal defense, and family law. Known for completing tasks efficiently with accuracy and attention to detail, while supporting senior attorneys and maintaining strict confidentiality. Skilled in client interviews, legal documentation, and problem-solving, with excellent communication and time management abilities. Currently pursuing a law degree and eager to contribute to legal teams by providing high-quality support and gaining valuable, practical experience in a fast-paced legal environment.",
+      "Education": "SASTRA DEEMED TO BE UNIVERSITY: Law-B.Com.LL.B.(Hons.), CGPA 8.6336 (2022–2027)\nSRI VIDYA BHARATI MAT. HR. SEC. SCHOOL: Higher Secondary Education, 585/600 (2021–2022)",
+      "Internship": "Shivakumar & Suresh Advocates, under Adv. K. Balamurali, Madras High Court and City Civil Court, Chennai (Dec 23, 2024 – Jan 18, 2025): Assisted in legal research, case prep, observed court, drafted documents, client summaries, maintained confidentiality. KM. Murugappan, Advocate, Pudukkottai District Court (June 25, 2024 – July 25, 2024): Legal research, case summarization, drafting petitions, observation, trial prep, organized case files/docs. K. Arumugam, Advocate, Salem District Court (Jan 18, 2024 – Feb 5, 2024). E. Kannan, Advocate, Salem District Court (Aug 2023 – Sep 2023): Client interaction, documentation, legal drafting.",
+      "Accomplishments": "Quarter-Finalist, 1st SGTU International Moot Court Competition (2024–25). Participant, KLA Moot Court Competition. Participant, Intra-Moot Court Competition conducted by SASTRA University School of Law. Essay Competitions: State Level Essay Competition (Constitution Day), Thanjavur District Court, Independence Day (Governor of Tamil Nadu). Research: Published \"Love Unchained\" (IJLMH, 2023); Article on media influence in progress.",
+      "Professional Qualifications": "Completed ICSI CSEET (Foundation Level). Currently pursuing ICSI Executive Program."
     };
-
     let currentSection = null;
     function openModal(section) {
       currentSection = section;
@@ -194,16 +157,22 @@
       if (currentSection) {
         const text = document.getElementById('modal-section-text').value;
         modalData[currentSection] = text;
-        document.getElementById(currentSection + '-summary').textContent = text;
+        // For list sections, convert \n to list items
+        document.getElementById(currentSection + '-summary').innerHTML = (
+          currentSection === "Skills" || currentSection === "Education" || currentSection === "Internship"
+           || currentSection === "Accomplishments" || currentSection === "Professional Qualifications"
+         )
+          ? "<ul class='skills-list'><li>"
+            + text.replace(/\n/g, '</li><li>')
+            + "</li></ul>"
+          : text.replace(/\n/g, "<br>");
       }
       closeModal();
     }
-    // Close modal when clicking outside
     window.onclick = function(e) {
       if (e.target == document.getElementById('modal')) closeModal();
     };
-
-    // Photo uploader: previews image as soon as you pick a file!
+    // Photo uploader: previews image as soon as you pick a file
     const fileInput = document.getElementById('photo-upload');
     const profileImg = document.getElementById('profile-photo');
     fileInput.addEventListener('change', function() {

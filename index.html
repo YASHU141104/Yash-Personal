@@ -1,25 +1,135 @@
-<!-- Heading and image container -->
-<div style="display: flex; align-items: center;">
-  <h1 id="main-heading" style="margin-right: 16px;">Yashwant S C</h1>
-  <img id="profile-photo" src="" style="display: none; width: 80px; height: 80px; object-fit: cover; border-radius: 50%; margin-left: 12px;" alt="Profile Photo">
-  <label for="photo-upload" style="cursor: pointer; margin-left: 12px; color: #007bff; text-decoration: underline;">
-    Add / Change Photo
-  </label>
-  <input type="file" accept="image/*" id="photo-upload" style="display: none;">
-</div>
-
-<script>
-  const input = document.getElementById('photo-upload');
-  const img = document.getElementById('profile-photo');
-
-  input.addEventListener('change', function() {
-    if (this.files && this.files[0]) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        img.src = e.target.result;
-        img.style.display = 'block';
-      }
-      reader.readAsDataURL(this.files[0]);
-    }
-  });
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Yashwant S C - Resume</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; background: #fafafa; color: #222; }
+    h1, h2, h3 { color: #3268a8; }
+    .section { margin-bottom: 2em; }
+    .section-title { font-weight: bold; margin-top: 1em; }
+    ul { margin: 0.5em 0 0.5em 1.5em; }
+    .contact, .skills, .education, .languages, .profile, .experience, .accomplishments, .qualifications, .declaration { background: #f5f7fa; padding: 1em; margin-bottom: 1em; border-radius: 7px; }
+  </style>
+</head>
+<body>
+  <h1>Yashwant S C</h1>
+  <div class="contact section">
+    <div class="section-title">Contact</div>
+    <p>
+      Phone: +91 9976460475<br>
+      Email: yashwantshrini2004@gmail.com<br>
+      Address: 93G/182, Pudhu Road, Old Suramangalam, Salem – 636 005.
+    </p>
+  </div>
+  <div class="skills section">
+    <div class="section-title">Skills</div>
+    <ul>
+      <li>Legal Compliance</li>
+      <li>Oral Communication</li>
+      <li>Document Review</li>
+      <li>Legal Writing and Legal Research</li>
+      <li>Relationship Building and Rapport</li>
+      <li>Data Entry and Database Maintenance</li>
+      <li>Research</li>
+    </ul>
+  </div>
+  <div class="education section">
+    <div class="section-title">Education</div>
+    <ul>
+      <li>
+        <strong>SASTRA DEEMED TO BE UNIVERSITY</strong><br>
+        Law-B.Com.; LL.B.(Hons.)<br>
+        CGPA: 8.6336<br>
+        2022 - 2027
+      </li>
+      <li>
+        <strong>SRI VIDYA BHARATI MAT. HR. SEC. SCHOOL</strong><br>
+        Higher Secondary Education, 585 out of 600<br>
+        2021 - 2022
+      </li>
+    </ul>
+  </div>
+  <div class="languages section">
+    <div class="section-title">Languages</div>
+    English (Fluent), Tamil (Fluent)
+  </div>
+  <div class="profile section">
+    <div class="section-title">Profile</div>
+    <p>
+      Resourceful and motivated Law Intern with a strong foundation in legal research, drafting, and case preparation, gained through hands-on experience in corporate law, criminal defense, and family law. Known for completing tasks efficiently with accuracy and attention to detail, while supporting senior attorneys and maintaining strict confidentiality. Skilled in client interviews, legal documentation, and problem-solving, with excellent communication and time management abilities. Currently pursuing a law degree and eager to contribute to legal teams by providing high-quality support and gaining valuable, practical experience in a fast-paced legal environment.
+    </p>
+  </div>
+  <div class="experience section">
+    <div class="section-title">Experience</div>
+    <ul>
+      <li>
+        <strong>SHIVAKUMAR & SURESH Advocates, under Adv. K. Balamurali</strong><br>
+        Madras High Court and City Civil Court, Chennai<br>
+        Dec 23, 2024 – Jan 18, 2025<br>
+        - Assisted in legal research and case preparation for civil and criminal matters.<br>
+        - Observed court proceedings at the Madras High Court and City Civil Court.<br>
+        - Supported drafting of legal documents and client consultation summaries.<br>
+        - Maintained confidentiality while providing reliable support to the senior advocate.
+      </li>
+      <li>
+        <strong>KM. Murugappan, Advocate</strong><br>
+        Pudukkottai District Court<br>
+        June 25, 2024 – July 25, 2024<br>
+        - Assisted in legal research, case summarization, and drafting petitions.<br>
+        - Observed courtroom procedures and supported trial preparation.<br>
+        - Gained exposure to civil and criminal proceedings.<br>
+        - Helped organize case files and prepare legal documents.
+      </li>
+      <li>
+        <strong>K. Arumugam, Advocate</strong><br>
+        Salem District Court<br>
+        Jan 18, 2024 – Feb 5, 2024
+      </li>
+      <li>
+        <strong>E. Kannan, Advocate</strong><br>
+        Salem District Court<br>
+        Aug 2023 – Sep 2023<br>
+        - Supported client interactions and documentation work.<br>
+        - Participated in case discussions and legal drafting tasks.
+      </li>
+    </ul>
+  </div>
+  <div class="accomplishments section">
+    <div class="section-title">Accomplishments</div>
+    <ul>
+      <li>Quarter-Finalist, 1st SGTU International Moot Court Competition (2024–25)</li>
+      <li>Participant, KLA Moot Court Competition</li>
+      <li>Participant, Intra-Moot Court Competition conducted by SASTRA University School of Law</li>
+      <li><strong>Essay Competitions:</strong>
+        <ul>
+          <li>State Level Essay Competition on “Constitutional Fundamental Duties: Balancing Rights and Responsibilities,” held for school and college students across Tamil Nadu as part of Constitution Day Celebrations.</li>
+          <li>Essay Competition conducted by the Thanjavur District Court</li>
+          <li>Independence Day Essay Competition on the “Constitution of India,” organized by the Governor of Tamil Nadu</li>
+        </ul>
+      </li>
+      <li><strong>Research and Publication:</strong>
+        <ul>
+          <li>Published article titled "Love Unchained: India’s Quest for Same-Sex Marriage Equality" in the International Journal of Law Management & Humanities (IJLMH), Volume 6, Issue 6 (2023), pp. 775–783. DOI:10.10000/IJLMH.116119</li>
+          <li>Preparing an article on Media Influence on the Indian Judicial System</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="qualifications section">
+    <div class="section-title">Professional Qualifications</div>
+    <ul>
+      <li>Completed ICSI CSEET (Foundation Level)</li>
+      <li>Currently pursuing ICSI Executive Program.</li>
+    </ul>
+  </div>
+  <div class="declaration section">
+    <div class="section-title">Declaration</div>
+    <p>
+      I hereby state that all the information noted above is accurate to the best of my beliefs and I take full responsibility for the correctness of the information.<br>
+      Salem, 31.05.2025<br>
+      <strong>(Yashwant S C)</strong>
+    </p>
+  </div>
+</body>
+</html>

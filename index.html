@@ -9,25 +9,63 @@
     body {
       background: linear-gradient(115deg, #c4e0e5, #4ca1af 60%);
       font-family: 'Inter', Arial, sans-serif; margin: 0; min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    }
+    .cover-bar {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 750px;
+      margin: 32px auto 32px auto;
+      padding: 26px 32px 18px 32px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 3px 24px rgba(30,40,80,.09);
+      min-height: 170px;
+    }
+    .cover-left {
+      flex: 0 0 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cover-photo {
+      width: 115px;
+      height: 115px;
+      border-radius: 64px;
+      object-fit: cover;
+      box-shadow: 0 2px 18px #4ca1af25;
+      border: 3px solid #007bff;
+      background: #e7eaf6;
+    }
+    .cover-right {
+      flex: 1 1 0;
+      margin-left: 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .cover-right h1 {
+      font-size: 2.18em;
+      margin: 0 0 6px 0;
+      color: #173b6c;
+      font-weight: 700;
+    }
+    .cover-right .contact {
+      font-size: 1.11em;
+      color: #434d74;
+    }
+    .cover-right .contact a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
     }
     .resume-card {
       background: #fff; border-radius: 16px; box-shadow: 0 8px 32px rgba(44,62,80,.22);
       width: 95vw; max-width: 540px; padding: 36px 28px 30px;
       display: flex; flex-direction: column; align-items: center; position: relative;
+      margin-bottom: 45px;
     }
-    .profile-photo {
-      width: 120px; height: 120px; object-fit: cover; border-radius: 56px;
-      border: 4px solid #007bff; box-shadow: 0 6px 20px rgba(0,123,255,.27);
-      margin-bottom: 18px; background: #e7eaf6; transition: box-shadow .22s;
-    }
-    .profile-photo:hover {
-      box-shadow: 0 12px 36px rgba(0,123,255,.35); cursor: pointer;
-    }
-    h1 { font-size: 2.3em; font-weight: 700; color: #173b6c; margin: 8px 0 2px 0;
-      text-align: center; letter-spacing: 0.01em; }
-    .main-meta { text-align: center; color: #4ca1af; font-size: 1.04em; margin: 0 0 14px;
-      font-weight: 500; word-break: break-all; }
     .section-heading { width: 100%; font-size: 1.13em; font-weight: 600; color: #007bff;
       letter-spacing: 0.02em; background: rgba(76,161,175, .10); border-radius: 6px;
       margin-top: 24px; margin-bottom: 2px; padding: 8px 16px; cursor: pointer;
@@ -44,48 +82,53 @@
     .close-btn { position: absolute; top: 12px; right: 18px; background: none; border: none; font-size: 1.7em; cursor: pointer; color: #b5b8bb;}
     .modal label {display: block; font-weight: 600; margin-bottom: 6px;}
     .modal textarea, .modal input[type='text'] { width: 98%; padding: 8px; border-radius: 6px; border: 1px solid #bedcec; font-size: 1em; margin-bottom: 17px; background: #f8fafc;}
+    .save-btn[disabled] { opacity:0.55; cursor: not-allowed;}
     .save-btn { background: #007bff; color: #fff; font-weight: 600; border: none; border-radius: 5px; padding: 7px 22px; cursor: pointer; font-size: 1em; float: right; box-shadow: 0 1px 6px rgba(0,123,255,.06);}
-    /* Login modal */
-    #login-modal { display:flex; position:fixed; z-index:2000; left:0; top:0; right:0; bottom:0; background:rgba(60,80,80,.23); justify-content:center; align-items:center;}
-    #login-modal .box {background:white; border-radius:12px; padding:32px 24px; min-width:310px; box-shadow:0 4px 24px rgba(0,0,0,.13);}
-    #login-modal input { width: 94%; padding: 7px; margin-top: 6px; margin-bottom: 18px; border-radius: 4px; border:1px solid #bbb;}
-    #login-modal button { background: #007bff; color:white; font-weight:600; border:none; border-radius:5px; padding:7px 20px; cursor:pointer;}
-    #login-modal h3 {margin-bottom:18px}
-    #login-error { color:red; margin-top:12px;}
-    @media (max-width: 700px) {.resume-card { padding: 20px 2vw; } .modal-content { min-width: 85vw;} }
+    .edit-hint {font-size:0.93em; color:#555; margin:-3px 0 10px 0;}
+    .password-row {margin-top:12px;}
+    .error-msg {color:red; font-size:0.97em;}
+    @media (max-width: 800px) {
+      .cover-bar {max-width:99vw;}
+      .resume-card {max-width:96vw;}
+    }
+    @media (max-width: 600px) {
+      .cover-bar { flex-direction: column; align-items: flex-start; padding: 14px 4vw; }
+      .cover-right { margin-left: 0; margin-top: 14px; }
+      .cover-photo { width: 85px; height: 85px; }
+    }
   </style>
 </head>
 <body>
-  <!-- Simple login modal (edit the username and password in the script) -->
-  <div id="login-modal">
-    <div class="box">
-      <h3>Resume Editor Login</h3>
-      <label>Username:<br><input id="username" type="text"></label>
-      <label>Password:<br><input id="password" type="password"></label>
-      <button onclick="doLogin()">Login</button>
-      <div id="login-error"></div>
+  <!-- Cover Section -->
+  <div class="cover-bar">
+    <div class="cover-left">
+      <img src="WhatsApp-Image-2025-09-19-at-09.28.16_7d9cb433.jpg" class="cover-photo" alt="Profile Photo">
+    </div>
+    <div class="cover-right">
+      <h1>Yashwant S C</h1>
+      <div class="contact">
+        <span>+91 9976460475</span><br>
+        <a href="mailto:yashwantshrini2004@gmail.com">yashwantshrini2004@gmail.com</a><br>
+        <span>93G/182, Pudhu Road, Old Suramangalam, Salem 636 005</span>
+      </div>
     </div>
   </div>
-  <!-- Modal -->
+  <!-- Modal for section editing -->
   <div id="modal" class="modal">
     <div class="modal-content" id="modal-content">
       <button class="close-btn" onclick="closeModal()">×</button>
       <div id="modal-section-name" style="margin-bottom:10px;font-size:1.08em;font-weight:600;"></div>
+      <div class="edit-hint">Enter the new section text. You must provide the password to save.</div>
       <textarea id="modal-section-text" rows="8"></textarea>
-      <button class="save-btn" onclick="saveModalContent()">Save</button>
+      <div class="password-row">
+        <label>Password: <input id="edit-password" type="password"></label>
+        <button class="save-btn" id="save-btn" onclick="saveModalContent()">Save</button>
+        <span id="error-msg" class="error-msg"></span>
+      </div>
     </div>
   </div>
+  <!-- Resume Content Below -->
   <div class="resume-card">
-    <input type="file" id="photo-upload" style="display:none;" accept="image/*">
-    <!-- Your actual photo will appear here! -->
-    <img src="WhatsApp-Image-2025-09-19-at-09.28.16_7d9cb433.jpg" id="profile-photo" class="profile-photo" alt="Profile Photo"
-         onclick="document.getElementById('photo-upload').click();">
-    <h1>Yashwant S C</h1>
-    <div class="main-meta">
-      +91 9976460475<br>
-      yashwantshrini2004@gmail.com<br>
-      93G/182, Pudhu Road, Old Suramangalam, Salem 636 005
-    </div>
     <!-- Skills -->
     <button class="section-heading" onclick="openModal('Skills')">Skills</button>
     <div id="Skills-summary" class="summary-view">
@@ -159,20 +202,8 @@
     </div>
   </div>
   <script>
-    // LOGIN CONTROL -- customize your username/password here
-    const AUTH_USER = "Yash";
-    const AUTH_PASS = "Yash14112004@";
-    function doLogin() {
-      var u = document.getElementById('username').value;
-      var p = document.getElementById('password').value;
-      if(u === AUTH_USER && p === AUTH_PASS) {
-        document.getElementById('login-modal').style.display = 'none';
-      } else {
-        document.getElementById('login-error').textContent = "Invalid username or password.";
-      }
-    }
-
-    // Modal for section editing
+    // Edit password for section saving
+    const EDIT_PASS = "yourPassword"; // CHANGE THIS!
     const modalData = {
       "Skills": "Legal Compliance\nOral communication\nDocument Review\nLegal writing and Legal Research\nRelationship building and rapport\nData Entry and Database Maintenance\nResearch",
       "Languages": "English (Fluent), Tamil (Fluent)",
@@ -187,6 +218,8 @@
       currentSection = section;
       document.getElementById('modal-section-name').textContent = section.replace(/([A-Z])/g, ' $1').trim();
       document.getElementById('modal-section-text').value = modalData[section] || "";
+      document.getElementById('edit-password').value = "";
+      document.getElementById('error-msg').textContent = "";
       document.getElementById('modal').style.display = 'flex';
     }
     function closeModal() {
@@ -194,6 +227,12 @@
       currentSection = null;
     }
     function saveModalContent() {
+      var enteredPass = document.getElementById('edit-password').value;
+      if(enteredPass !== EDIT_PASS) {
+        document.getElementById('error-msg').textContent = "Incorrect password.";
+        return;
+      }
+      document.getElementById('error-msg').textContent = "";
       if (currentSection) {
         const text = document.getElementById('modal-section-text').value;
         modalData[currentSection] = text;
@@ -211,18 +250,6 @@
     window.onclick = function(e) {
       if (e.target == document.getElementById('modal')) closeModal();
     };
-    // Photo uploader: previews image as soon as you pick a file
-    const fileInput = document.getElementById('photo-upload');
-    const profileImg = document.getElementById('profile-photo');
-    fileInput.addEventListener('change', function() {
-      if (fileInput.files && fileInput.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          profileImg.src = e.target.result;
-        }
-        reader.readAsDataURL(fileInput.files[0]);
-      }
-    });
   </script>
 </body>
 </html>

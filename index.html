@@ -2,134 +2,159 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Yashwant S C - Resume</title>
+  <title>Interactive Resume - Yashwant S C</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: Arial, sans-serif; margin: 2em; background: #fafafa; color: #222; }
-    h1, h2, h3 { color: #3268a8; }
-    .section { margin-bottom: 2em; }
-    .section-title { font-weight: bold; margin-top: 1em; }
-    ul { margin: 0.5em 0 0.5em 1.5em; }
-    .contact, .skills, .education, .languages, .profile, .experience, .accomplishments, .qualifications, .declaration { background: #f5f7fa; padding: 1em; margin-bottom: 1em; border-radius: 7px; }
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 40px;
+      background: #fafbfe;
+      color: #19202c;
+    }
+    .section-heading {
+      color: #007bff;
+      cursor: pointer;
+      font-size: 1.3em;
+      margin-top: 32px;
+      margin-bottom: 12px;
+      transition: text-decoration 0.2s;
+    }
+    .section-heading:hover {
+      text-decoration: underline;
+    }
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1000; 
+      left: 0; top: 0; right: 0; bottom: 0;
+      background: rgba(15,15,30,0.28);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      border-radius: 8px;
+      padding: 28px 22px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.15);
+      min-width: 320px;
+      max-width: 98vw;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      right: 20px; top: 12px;
+      background: none;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      color: #999;
+    }
+    .modal label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    .modal textarea, .modal input[type='text'] {
+      width: 98%; 
+      margin-bottom: 18px; 
+      padding: 7px;
+      border: 1px solid #ccc; 
+      border-radius: 4px;
+    }
+    .save-btn {
+      background: #007bff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 7px 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      float: right;
+    }
+    .summary-view {
+      margin-bottom: 18px;
+      color: #444;
+    }
   </style>
 </head>
 <body>
-  <h1>Yashwant S C</h1>
-  <div class="contact section">
-    <div class="section-title">Contact</div>
-    <p>
-      Phone: +91 9976460475<br>
-      Email: yashwantshrini2004@gmail.com<br>
-      Address: 93G/182, Pudhu Road, Old Suramangalam, Salem – 636 005.
-    </p>
+  <!-- Modal Template -->
+  <div id="modal" class="modal">
+    <div class="modal-content" id="modal-content">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <div id="modal-section-name" style="margin-bottom:10px;font-size:1.08em;font-weight:600;"></div>
+      <textarea id="modal-section-text" rows="7"></textarea>
+      <button class="save-btn" onclick="saveModalContent()">Save</button>
+    </div>
   </div>
-  <div class="skills section">
-    <div class="section-title">Skills</div>
-    <ul>
-      <li>Legal Compliance</li>
-      <li>Oral Communication</li>
-      <li>Document Review</li>
-      <li>Legal Writing and Legal Research</li>
-      <li>Relationship Building and Rapport</li>
-      <li>Data Entry and Database Maintenance</li>
-      <li>Research</li>
-    </ul>
+
+  <!-- Basic Info, Each section is clickable -->
+  
+  <div style="margin-bottom: 10px;">
+    <span class="section-heading" onclick="openModal('Name')">1. Name</span>
+    <div id="Name-summary" class="summary-view">Yashwant S C</div>
   </div>
-  <div class="education section">
-    <div class="section-title">Education</div>
-    <ul>
-      <li>
-        <strong>SASTRA DEEMED TO BE UNIVERSITY</strong><br>
-        Law-B.Com.; LL.B.(Hons.)<br>
-        CGPA: 8.6336<br>
-        2022 - 2027
-      </li>
-      <li>
-        <strong>SRI VIDYA BHARATI MAT. HR. SEC. SCHOOL</strong><br>
-        Higher Secondary Education, 585 out of 600<br>
-        2021 - 2022
-      </li>
-    </ul>
+  <div style="margin-bottom: 10px;">
+    <span class="section-heading" onclick="openModal('Contact')">2. Contact</span>
+    <div id="Contact-summary" class="summary-view">Phone: +91 9976460475 | Email: yashwantshrini2004@gmail.com | Salem, Tamil Nadu</div>
   </div>
-  <div class="languages section">
-    <div class="section-title">Languages</div>
-    English (Fluent), Tamil (Fluent)
+  <div style="margin-bottom: 10px;">
+    <span class="section-heading" onclick="openModal('Profile')">3. Profile</span>
+    <div id="Profile-summary" class="summary-view">Resourceful Law Intern skilled in research, drafting, and support for legal teams.</div>
   </div>
-  <div class="profile section">
-    <div class="section-title">Profile</div>
-    <p>
-      Resourceful and motivated Law Intern with a strong foundation in legal research, drafting, and case preparation, gained through hands-on experience in corporate law, criminal defense, and family law. Known for completing tasks efficiently with accuracy and attention to detail, while supporting senior attorneys and maintaining strict confidentiality. Skilled in client interviews, legal documentation, and problem-solving, with excellent communication and time management abilities. Currently pursuing a law degree and eager to contribute to legal teams by providing high-quality support and gaining valuable, practical experience in a fast-paced legal environment.
-    </p>
+  <div style="margin-bottom: 10px;">
+    <span class="section-heading" onclick="openModal('Education')">4. Education</span>
+    <div id="Education-summary" class="summary-view">B.Com., LL.B. (Hons) at SASTRA Deemed University | HSC at Sri Vidya Bharati</div>
   </div>
-  <div class="experience section">
-    <div class="section-title">Experience</div>
-    <ul>
-      <li>
-        <strong>SHIVAKUMAR & SURESH Advocates, under Adv. K. Balamurali</strong><br>
-        Madras High Court and City Civil Court, Chennai<br>
-        Dec 23, 2024 – Jan 18, 2025<br>
-        - Assisted in legal research and case preparation for civil and criminal matters.<br>
-        - Observed court proceedings at the Madras High Court and City Civil Court.<br>
-        - Supported drafting of legal documents and client consultation summaries.<br>
-        - Maintained confidentiality while providing reliable support to the senior advocate.
-      </li>
-      <li>
-        <strong>KM. Murugappan, Advocate</strong><br>
-        Pudukkottai District Court<br>
-        June 25, 2024 – July 25, 2024<br>
-        - Assisted in legal research, case summarization, and drafting petitions.<br>
-        - Observed courtroom procedures and supported trial preparation.<br>
-        - Gained exposure to civil and criminal proceedings.<br>
-        - Helped organize case files and prepare legal documents.
-      </li>
-      <li>
-        <strong>K. Arumugam, Advocate</strong><br>
-        Salem District Court<br>
-        Jan 18, 2024 – Feb 5, 2024
-      </li>
-      <li>
-        <strong>E. Kannan, Advocate</strong><br>
-        Salem District Court<br>
-        Aug 2023 – Sep 2023<br>
-        - Supported client interactions and documentation work.<br>
-        - Participated in case discussions and legal drafting tasks.
-      </li>
-    </ul>
+  <div style="margin-bottom: 10px;">
+    <span class="section-heading" onclick="openModal('Internship')">5. Internship Experience</span>
+    <div id="Internship-summary" class="summary-view">Shivakumar & Suresh Advocates, KM Murugappan Advocate, and others</div>
   </div>
-  <div class="accomplishments section">
-    <div class="section-title">Accomplishments</div>
-    <ul>
-      <li>Quarter-Finalist, 1st SGTU International Moot Court Competition (2024–25)</li>
-      <li>Participant, KLA Moot Court Competition</li>
-      <li>Participant, Intra-Moot Court Competition conducted by SASTRA University School of Law</li>
-      <li><strong>Essay Competitions:</strong>
-        <ul>
-          <li>State Level Essay Competition on “Constitutional Fundamental Duties: Balancing Rights and Responsibilities,” held for school and college students across Tamil Nadu as part of Constitution Day Celebrations.</li>
-          <li>Essay Competition conducted by the Thanjavur District Court</li>
-          <li>Independence Day Essay Competition on the “Constitution of India,” organized by the Governor of Tamil Nadu</li>
-        </ul>
-      </li>
-      <li><strong>Research and Publication:</strong>
-        <ul>
-          <li>Published article titled "Love Unchained: India’s Quest for Same-Sex Marriage Equality" in the International Journal of Law Management & Humanities (IJLMH), Volume 6, Issue 6 (2023), pp. 775–783. DOI:10.10000/IJLMH.116119</li>
-          <li>Preparing an article on Media Influence on the Indian Judicial System</li>
-        </ul>
-      </li>
-    </ul>
+  <div style="margin-bottom: 10px;">
+    <span class="section-heading" onclick="openModal('Accomplishments')">6. Accomplishments</span>
+    <div id="Accomplishments-summary" class="summary-view">Moots, essay competitions, and research publication</div>
   </div>
-  <div class="qualifications section">
-    <div class="section-title">Professional Qualifications</div>
-    <ul>
-      <li>Completed ICSI CSEET (Foundation Level)</li>
-      <li>Currently pursuing ICSI Executive Program.</li>
-    </ul>
+  <div style="margin-bottom: 10px;">
+    <span class="section-heading" onclick="openModal('Professional Qualifications')">7. Professional Qualifications</span>
+    <div id="Professional Qualifications-summary" class="summary-view">ICSI CSEET, pursuing ICSI Executive Program</div>
   </div>
-  <div class="declaration section">
-    <div class="section-title">Declaration</div>
-    <p>
-      I hereby state that all the information noted above is accurate to the best of my beliefs and I take full responsibility for the correctness of the information.<br>
-      Salem, 31.05.2025<br>
-      <strong>(Yashwant S C)</strong>
-    </p>
-  </div>
+
+  <script>
+    // Modal data storage (simple for browser use)
+    const modalData = {
+      "Name": "Yashwant S C",
+      "Contact": "Phone: +91 9976460475 | Email: yashwantshrini2004@gmail.com | Salem, Tamil Nadu",
+      "Profile": "Resourceful Law Intern skilled in research, drafting, and support for legal teams.",
+      "Education": "B.Com., LL.B. (Hons) at SASTRA Deemed University | HSC at Sri Vidya Bharati",
+      "Internship": "Shivakumar & Suresh Advocates, KM Murugappan Advocate, and others",
+      "Accomplishments": "Moots, essay competitions, and research publication",
+      "Professional Qualifications": "ICSI CSEET, pursuing ICSI Executive Program"
+    };
+
+    let currentSection = null;
+    function openModal(section) {
+      currentSection = section;
+      document.getElementById('modal-section-name').textContent = section;
+      document.getElementById('modal-section-text').value = modalData[section] || "";
+      document.getElementById('modal').style.display = 'flex';
+    }
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+      currentSection = null;
+    }
+    function saveModalContent() {
+      if (currentSection) {
+        const text = document.getElementById('modal-section-text').value;
+        modalData[currentSection] = text;
+        document.getElementById(currentSection + '-summary').textContent = text;
+      }
+      closeModal();
+    }
+    // Optional: click outside modal to close
+    window.onclick = function(e) {
+      if (e.target == document.getElementById('modal')) closeModal();
+    };
+  </script>
 </body>
 </html>
+

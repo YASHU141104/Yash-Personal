@@ -2,20 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Resume - Yashwant S C</title>
+  <title>Interactive Resume - Yashwant S C</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Inter:400,600,700" rel="stylesheet">
   <style>
-    body { background: linear-gradient(115deg, #c4e0e5, #4ca1af 60%);
+    body {
+      background: linear-gradient(115deg, #c4e0e5, #4ca1af 60%);
       font-family: 'Inter', Arial, sans-serif; margin: 0; min-height: 100vh;
-      display: flex; align-items: center; justify-content: center; }
-    .resume-card { background: #fff; border-radius: 16px; box-shadow: 0 8px 32px rgba(44,62,80,.22);
-      width: 95vw; max-width: 540px; padding: 36px 28px 30px; display: flex; flex-direction: column; align-items: center; position: relative; }
-    .profile-photo { width: 120px; height: 120px; object-fit: cover; border-radius: 56px; border: 4px solid #007bff;
-      box-shadow: 0 6px 20px rgba(0,123,255,.27); margin-bottom: 18px; background: #e7eaf6; transition: box-shadow .22s; }
-    .profile-photo:hover { box-shadow: 0 12px 36px rgba(0,123,255,.35); cursor: pointer; }
-    h1 { font-size: 2.3em; font-weight: 700; color: #173b6c; margin: 8px 0 2px 0; text-align: center; letter-spacing: 0.01em; }
-    .main-meta { text-align: center; color: #4ca1af; font-size: 1.04em; margin: 0 0 14px; font-weight: 500; word-break: break-all; }
+      display: flex; align-items: center; justify-content: center;
+    }
+    .resume-card {
+      background: #fff; border-radius: 16px; box-shadow: 0 8px 32px rgba(44,62,80,.22);
+      width: 95vw; max-width: 540px; padding: 36px 28px 30px;
+      display: flex; flex-direction: column; align-items: center; position: relative;
+    }
+    .profile-photo {
+      width: 120px; height: 120px; object-fit: cover; border-radius: 56px;
+      border: 4px solid #007bff; box-shadow: 0 6px 20px rgba(0,123,255,.27);
+      margin-bottom: 18px; background: #e7eaf6; transition: box-shadow .22s;
+    }
+    .profile-photo:hover {
+      box-shadow: 0 12px 36px rgba(0,123,255,.35); cursor: pointer;
+    }
+    h1 { font-size: 2.3em; font-weight: 700; color: #173b6c; margin: 8px 0 2px 0;
+      text-align: center; letter-spacing: 0.01em; }
+    .main-meta { text-align: center; color: #4ca1af; font-size: 1.04em; margin: 0 0 14px;
+      font-weight: 500; word-break: break-all; }
     .section-heading { width: 100%; font-size: 1.13em; font-weight: 600; color: #007bff;
       letter-spacing: 0.02em; background: rgba(76,161,175, .10); border-radius: 6px;
       margin-top: 24px; margin-bottom: 2px; padding: 8px 16px; cursor: pointer;
@@ -25,7 +37,6 @@
       margin-bottom: 2px; padding: 11px 15px; font-size: 1em;}
     .skills-list { margin: 0 0 8px 14px; padding: 0;}
     .skills-list li { margin-bottom: 3px;}
-    /* Modal Styles */
     .modal { display: none; position: fixed; z-index: 1001; left: 0; top: 0; right: 0; bottom: 0;
       background: rgba(30,35,67,0.26); justify-content: center; align-items: center;}
     .modal-content {background: #fff; border-radius: 14px; padding: 28px 18px 18px;
@@ -34,10 +45,27 @@
     .modal label {display: block; font-weight: 600; margin-bottom: 6px;}
     .modal textarea, .modal input[type='text'] { width: 98%; padding: 8px; border-radius: 6px; border: 1px solid #bedcec; font-size: 1em; margin-bottom: 17px; background: #f8fafc;}
     .save-btn { background: #007bff; color: #fff; font-weight: 600; border: none; border-radius: 5px; padding: 7px 22px; cursor: pointer; font-size: 1em; float: right; box-shadow: 0 1px 6px rgba(0,123,255,.06);}
+    /* Login modal */
+    #login-modal { display:flex; position:fixed; z-index:2000; left:0; top:0; right:0; bottom:0; background:rgba(60,80,80,.23); justify-content:center; align-items:center;}
+    #login-modal .box {background:white; border-radius:12px; padding:32px 24px; min-width:310px; box-shadow:0 4px 24px rgba(0,0,0,.13);}
+    #login-modal input { width: 94%; padding: 7px; margin-top: 6px; margin-bottom: 18px; border-radius: 4px; border:1px solid #bbb;}
+    #login-modal button { background: #007bff; color:white; font-weight:600; border:none; border-radius:5px; padding:7px 20px; cursor:pointer;}
+    #login-modal h3 {margin-bottom:18px}
+    #login-error { color:red; margin-top:12px;}
     @media (max-width: 700px) {.resume-card { padding: 20px 2vw; } .modal-content { min-width: 85vw;} }
   </style>
 </head>
 <body>
+  <!-- Simple login modal (edit the username and password in the script) -->
+  <div id="login-modal">
+    <div class="box">
+      <h3>Resume Editor Login</h3>
+      <label>Username:<br><input id="username" type="text"></label>
+      <label>Password:<br><input id="password" type="password"></label>
+      <button onclick="doLogin()">Login</button>
+      <div id="login-error"></div>
+    </div>
+  </div>
   <!-- Modal -->
   <div id="modal" class="modal">
     <div class="modal-content" id="modal-content">
@@ -49,9 +77,8 @@
   </div>
   <div class="resume-card">
     <input type="file" id="photo-upload" style="display:none;" accept="image/*">
-    <!-- Photo appears here -->
-    <img src="<img src="WhatsApp-Image-2025-09-19-at-09.28.16_7d9cb433.jpg" id="profile-photo" class="profile-photo" alt="Profile Photo">
-" id="profile-photo" class="profile-photo" alt="Profile Photo"
+    <!-- Your actual photo will appear here! -->
+    <img src="WhatsApp-Image-2025-09-19-at-09.28.16_7d9cb433.jpg" id="profile-photo" class="profile-photo" alt="Profile Photo"
          onclick="document.getElementById('photo-upload').click();">
     <h1>Yashwant S C</h1>
     <div class="main-meta">
@@ -59,7 +86,6 @@
       yashwantshrini2004@gmail.com<br>
       93G/182, Pudhu Road, Old Suramangalam, Salem 636 005
     </div>
-    
     <!-- Skills -->
     <button class="section-heading" onclick="openModal('Skills')">Skills</button>
     <div id="Skills-summary" class="summary-view">
@@ -133,7 +159,20 @@
     </div>
   </div>
   <script>
-    // Modal data storage (update below if you edit summary)
+    // LOGIN CONTROL -- customize your username/password here
+    const AUTH_USER = "yourUsername";
+    const AUTH_PASS = "yourPassword";
+    function doLogin() {
+      var u = document.getElementById('username').value;
+      var p = document.getElementById('password').value;
+      if(u === AUTH_USER && p === AUTH_PASS) {
+        document.getElementById('login-modal').style.display = 'none';
+      } else {
+        document.getElementById('login-error').textContent = "Invalid username or password.";
+      }
+    }
+
+    // Modal for section editing
     const modalData = {
       "Skills": "Legal Compliance\nOral communication\nDocument Review\nLegal writing and Legal Research\nRelationship building and rapport\nData Entry and Database Maintenance\nResearch",
       "Languages": "English (Fluent), Tamil (Fluent)",
@@ -158,7 +197,6 @@
       if (currentSection) {
         const text = document.getElementById('modal-section-text').value;
         modalData[currentSection] = text;
-        // For list sections, convert \n to list items
         document.getElementById(currentSection + '-summary').innerHTML = (
           currentSection === "Skills" || currentSection === "Education" || currentSection === "Internship"
            || currentSection === "Accomplishments" || currentSection === "Professional Qualifications"

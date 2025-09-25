@@ -32,21 +32,23 @@ ul {
   border-top: 2px solid #abc;
   margin:24px 0;
 }
-.tag {
+.tag, .section-title {
   background: #eef;
   color:#345;
   border-radius:5px;
   padding:2px 7px;
-  font-size:0.9em;
+  font-size:0.98em;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: background 0.2s, color 0.2s;
+}
+.tag:hover, .section-title:hover {
+  background: #def;
+  color: #1a377a;
 }
 .section-title {
+  display: inline-block;
   margin-bottom:6px;
   font-size:1.1em;
   color:#234;
-  cursor: pointer;
-  text-decoration: underline;
-}
-.clickable:hover {
-  background: #def;
-  color: #1a377a;
 }

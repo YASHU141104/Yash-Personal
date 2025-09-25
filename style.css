@@ -1,54 +1,139 @@
+:root {
+  --bg: #fff;
+  --fg: #293b70;
+  --section-bg: #f8fafc;
+}
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #f9f9f9;
-  margin:0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg,#e8eaf6 0%,#cfd8dc 100%);
+  color: var(--fg);
+  margin: 0;
+  transition: background .3s, color .3s;
 }
+body.dark {
+  --bg: #231f2b;
+  --fg: #e1e9ef;
+  --section-bg: #29243a;
+}
+body, .container { background: var(--bg);}
+.name, h1, h2, .section-title { color: var(--fg);}
+section { background: var(--section-bg);}
 .container {
-  max-width: 800px;
-  margin: 32px auto;
-  background: #fff;
-  box-shadow: 0 2px 8px #0001;
-  padding: 32px;
-  border-radius: 12px;
+  max-width: 900px;
+  margin: 40px auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #62779d24;
+  padding: 32px 38px;
 }
-h1, h2 {
-  color: #243c66;
-  margin-bottom: 8px;
-}
-h1 {
-  font-size: 2.2em;
-}
-h2 {
-  font-size: 1.2em;
-  margin-top:24px;
-}
-.contact, .skills, .education, .exp, .other {
+header {
+  text-align: center;
   margin-bottom: 24px;
 }
-ul {
-  padding-left: 18px;
+.name {
+  letter-spacing: 0.12em;
+  font-size: 2.3em;
+  margin-bottom: 4px;
+  font-weight: 700;
 }
-.divider {
-  border-top: 2px solid #abc;
-  margin:24px 0;
-}
-.tag, .section-title {
-  background: #eef;
-  color:#345;
-  border-radius:5px;
-  padding:2px 7px;
-  font-size:0.98em;
+.tag {
+  background: #e3f2fd;
+  color: #166acf;
+  border-radius: 12px;
+  padding: 6px 18px;
+  font-size: 1.02em;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 10px;
   cursor: pointer;
+  transition: background .2s, color .2s;
   text-decoration: underline;
-  transition: background 0.2s, color 0.2s;
 }
 .tag:hover, .section-title:hover {
-  background: #def;
-  color: #1a377a;
+  background: #bbdefb;
+  color: #0d47a1;
 }
-.section-title {
-  display: inline-block;
-  margin-bottom:6px;
-  font-size:1.1em;
-  color:#234;
+nav {
+  margin-bottom: 10px;
 }
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 0;
+  list-style: none;
+  justify-content: center;
+}
+.nav-link {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0; margin: 0;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color .18s;
+}
+.nav-link:hover { color: #1976d2; }
+ul { padding-left: 28px; margin-top: 6px;}
+section {
+  margin-bottom: 28px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #e3ecf248;
+  padding: 15px 18px;
+  animation: fadeMove 0.85s cubic-bezier(.21,.56,.36,1.23) both;
+}
+section:last-child { background: transparent; box-shadow: none;}
+@keyframes fadeMove { 0% { opacity: 0; transform: translateY(35px);}
+100% { opacity: 1; transform: translateY(0);}}
+section:nth-child(2) { animation-delay: .1s;}
+section:nth-child(3) { animation-delay: .2s;}
+section:nth-child(4) { animation-delay: .3s;}
+section:nth-child(5) { animation-delay: .4s;}
+section:nth-child(6) { animation-delay: .5s;}
+header { animation: fadeMove .7s both;}
+nav { animation: fadeMove .9s both; animation-delay: .15s;}
+/* Collapsible sections */
+.collapsible .collapse-content { display: none;}
+.collapsible.expanded .collapse-content { display: block;}
+.section-title::before { content: '▼ '; display: inline-block; transition: transform .18s;}
+.collapsible:not(.expanded) .section-title::before { content: '► '; transform: rotate(0);}
+.section-title { cursor:pointer;}
+/* PDF button */
+.pdf-btn {
+  background: #166acf;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 24px;
+  font-weight: 600;
+  font-size: 1em;
+  box-shadow: 0 1.5px 8px #166acf22;
+  cursor: pointer;
+  transition: background .2s, transform .18s;
+  margin: 5px 0 0 0;
+}
+.pdf-btn:hover { background: #0b3974; transform: scale(1.04);}
+.pdf-viewer { margin-top: 12px;}
+/* Back to top button */
+#backToTop {
+  position:fixed; right:24px; bottom:28px; z-index:200;
+  background:#166acf; color:#fff;
+  border:none; border-radius:50%; width:46px; height:46px;
+  font-size:1.2em; box-shadow:0 2px 10px #166acf29;
+  cursor:pointer; display:none; transition:background .2s;
+}
+#backToTop:hover { background:#0b3974;}
+/* Dark mode toggle */
+#dark-toggle {
+  position: fixed;
+  top: 18px; right: 20px;
+  z-index: 100;
+  background: #fff;
+  border:2px solid #ddd; border-radius:50%;
+  width:40px; height:40px;
+  font-size: 1.25em;
+  box-shadow: 0 2px 9px #293b7012;
+  color:#166acf;
+  cursor:pointer;
+  transition

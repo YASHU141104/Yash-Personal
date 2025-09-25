@@ -1,0 +1,52 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f9f9f9;
+  margin:0;
+}
+.container {
+  max-width: 800px;
+  margin: 32px auto;
+  background: #fff;
+  box-shadow: 0 2px 8px #0001;
+  padding: 32px;
+  border-radius: 12px;
+}
+h1, h2 {
+  color: #243c66;
+  margin-bottom: 8px;
+}
+h1 {
+  font-size: 2.2em;
+}
+h2 {
+  font-size: 1.2em;
+  margin-top:24px;
+}
+.contact, .skills, .education, .exp, .other {
+  margin-bottom: 24px;
+}
+ul {
+  padding-left: 18px;
+}
+.divider {
+  border-top: 2px solid #abc;
+  margin:24px 0;
+}
+.tag {
+  background: #eef;
+  color:#345;
+  border-radius:5px;
+  padding:2px 7px;
+  font-size:0.9em;
+}
+.section-title {
+  margin-bottom:6px;
+  font-size:1.1em;
+  color:#234;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.clickable:hover {
+  background: #def;
+  color: #1a377a;
+}

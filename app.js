@@ -1,8 +1,6 @@
-document.querySelectorAll('.clickable').forEach(function(heading) {
+document.querySelectorAll('.section-title, .tag').forEach(function(heading) {
   heading.addEventListener('click', function(e) {
-    // Section container is parent of the heading
     let parentDiv = heading.parentElement;
-    // Get section HTML
     let sectionContent = parentDiv.innerHTML;
     let sectionTitle = heading.textContent;
 
@@ -16,7 +14,8 @@ document.querySelectorAll('.clickable').forEach(function(heading) {
       </head>
       <body>
         <div class="container">
-          <h2>${sectionTitle}</h2>${sectionContent}
+          <h2>${sectionTitle}</h2>
+          ${sectionContent}
         </div>
       </body>
       </html>

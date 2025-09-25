@@ -1,25 +1,26 @@
-document.querySelectorAll('.section-title, .tag').forEach(function(heading) {
-  heading.addEventListener('click', function(e) {
-    let parentDiv = heading.parentElement;
-    let sectionContent = parentDiv.innerHTML;
-    let sectionTitle = heading.textContent;
+// DARK MODE TOGGLE
+document.getElementById('dark-toggle').onclick = function() {
+  document.body.classList.toggle('dark');
+  // Optionally persist using localStorage
+};
+// Animated navigation scroll handled by browser via scroll-behavior CSS
 
-    let newWindow = window.open('', '_blank', 'width=500,height=400');
-    newWindow.document.write(`
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <title>${sectionTitle}</title>
-        <link rel="stylesheet" href="style.css">
-      </head>
-      <body>
-        <div class="container">
-          <h2>${sectionTitle}</h2>
-          ${sectionContent}
-        </div>
-      </body>
-      </html>
-    `);
-    newWindow.document.close();
-  });
+// Floating Back to Top
+const topBtn = document.getElementById('backToTop');
+window.addEventListener('scroll',function() {
+  topBtn.style.display = (window.scrollY > 300) ? 'block' : 'none';
 });
+topBtn.onclick = () => window.scrollTo({top:0, behavior:"smooth"});
+
+// Section Expansion/Collapse
+document.querySelectorAll('.collapsible .section-title').forEach(function(title){
+  title.onclick = function(){
+    let parent = title.closest('.collapsible');
+    parent.classList.toggle('expanded');
+  };
+});
+
+// PDF Open Button
+function openPDF() {
+  window.open('Resume.pdf-2.pdf', '_blank');
+}

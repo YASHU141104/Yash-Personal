@@ -22,5 +22,5 @@ document.querySelectorAll('.collapsible .section-title').forEach(function(title)
 
 // PDF Open Button
 function openPDF() {
-  window.open('Resume.pdf-2.pdf', '_blank');
+  window.open('Resume.pdf-2 (3).pdf', '_blank');
 }

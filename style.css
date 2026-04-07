@@ -2,7 +2,7 @@
   --bg: #fff;
   --fg: #293b70;
   --section-bg: #f8fafc;
-}
+} 
 body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: linear-gradient(135deg,#e8eaf6 0%,#cfd8dc 100%);
